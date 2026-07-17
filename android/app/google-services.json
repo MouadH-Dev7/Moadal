@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "698091666289",
+    "project_id": "app-mouadel",
+    "storage_bucket": "app-mouadel.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:698091666289:android:1d47664211414223ee14d0",
+        "android_client_info": {
+          "package_name": "com.bm.software.moadal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCumPlPgi2sWNA-xw7pNUKxCswVcEnNAdc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
