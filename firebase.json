@@ -1,1 +1,29 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"app-mouadel","appId":"1:698091666289:android:1d47664211414223ee14d0","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"app-mouadel","configurations":{"android":"1:698091666289:android:1d47664211414223ee14d0","ios":"1:698091666289:ios:9dfc475fe5129487ee14d0"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "app-mouadel",
+          "appId": "1:698091666289:android:1d47664211414223ee14d0",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "app-mouadel",
+          "appId": "1:698091666289:ios:9dfc475fe5129487ee14d0",
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "app-mouadel",
+          "configurations": {
+            "android": "1:698091666289:android:1d47664211414223ee14d0",
+            "ios": "1:698091666289:ios:9dfc475fe5129487ee14d0"
+          }
+        }
+      }
+    }
+  }
+}

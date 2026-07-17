@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY_CURRENT_KEY</key>
+	<string>AIzaSyD9T_O9KjR00SJ_3Kxpp7iBSWDe_HeJnWs</string>
+	<key>API_KEY_VALID</key>
+	<true/>
+	<key>GCM_SENDER_ID</key>
+	<string>698091666289</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.bm.software.moadal</string>
+	<key>PROJECT_ID</key>
+	<string>app-mouadel</string>
+	<key>STORAGE_BUCKET</key>
+	<string>app-mouadel.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<true/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<false/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<false/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:698091666289:ios:9dfc475fe5129487ee14d0</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.698091666289-PLACEHOLDER</string>
+	<key>CLIENT_ID</key>
+	<string>698091666289-PLACEHOLDER.apps.googleusercontent.com</string>
+	<key>DATABASE_URL</key>
+	<string>https://app-mouadel.firebaseio.com</string>
+</dict>
+</plist>
