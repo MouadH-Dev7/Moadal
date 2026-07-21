@@ -7,6 +7,8 @@ workflows:
       flutter: stable
       xcode: latest
       cocoapods: default
+      groups:
+        - APP_STORE_CONNECT_API_KEY
     triggering:
       events:
         - push
@@ -23,12 +25,13 @@ workflows:
           cd ios
           pod install --repo-update
           cd ..
-      - name: Build iOS release
+      - name: Build iOS IPA
         script: |
-          flutter build ios --release
+          flutter build ipa --release
     artifacts:
       - build/ios/ipa/*.ipa
-      - build/ios/iphoneos/Runner.app
+      - build/ios/archive/*.xcarchive
+      - build/ios/logs/**
     publishing:
       email:
         recipients:
