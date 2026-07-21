@@ -1,33 +1,20 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
-class HapticFeedbackHelper {
-  // Haptic Feedback خفيف للأزرار العادية
-  static void lightImpact() {
-    HapticFeedback.lightImpact();
-  }
+class HapticHelper {
+  HapticHelper._();
 
-  // Haptic Feedback متوسط للأزرار المهمة
-  static void mediumImpact() {
-    HapticFeedback.mediumImpact();
-  }
+  static void light() => _run(HapticFeedback.lightImpact);
+  static void medium() => _run(HapticFeedback.mediumImpact);
+  static void heavy() => _run(HapticFeedback.heavyImpact);
+  static void success() => _run(HapticFeedback.mediumImpact);
+  static void error() => _run(HapticFeedback.heavyImpact);
+  static void selection() => _run(HapticFeedback.selectionClick);
 
-  // Haptic Feedback قوي للأحداث المهمة
-  static void heavyImpact() {
-    HapticFeedback.heavyImpact();
-  }
-
-  // Haptic Feedback للنجاح
-  static void success() {
-    HapticFeedback.mediumImpact();
-  }
-
-  // Haptic Feedback للخطأ
-  static void error() {
-    HapticFeedback.heavyImpact();
-  }
-
-  // Haptic Feedback للاختيار
-  static void selection() {
-    HapticFeedback.selectionClick();
+  static void _run(VoidCallback cb) {
+    if (kIsWeb) return;
+    try {
+      cb();
+    } catch (_) {}
   }
 }

@@ -1,7 +1,7 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import 'package:moadal/firebase_options.dart';
@@ -13,13 +13,26 @@ Future<void> main() async {
 
   FirebaseAnalytics? analytics;
   if (_supportsFirebaseInitialization) {
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
-    analytics = FirebaseAnalytics.instance;
+    try {
+      await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
+      );
+      analytics = FirebaseAnalytics.instance;
+    } catch (e) {
+      if (kDebugMode) {
+        debugPrint('Firebase initialization warning: $e');
+      }
+    }
   }
 
-  await MobileAds.instance.initialize();
+  try {
+    await MobileAds.instance.initialize();
+  } catch (e) {
+    if (kDebugMode) {
+      debugPrint('AdMob initialization warning: $e');
+    }
+  }
+
   runApp(MyApp(analytics: analytics));
 }
 
@@ -37,7 +50,8 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
       navigatorObservers: [
-        if (analytics != null) FirebaseAnalyticsObserver(analytics: analytics!),
+        if (analytics != null)
+          FirebaseAnalyticsObserver(analytics: analytics!),
       ],
       home: const SplashScreen(),
     );
@@ -48,7 +62,6 @@ bool get _supportsFirebaseInitialization {
   if (kIsWeb) {
     return false;
   }
-
   return defaultTargetPlatform == TargetPlatform.android ||
       defaultTargetPlatform == TargetPlatform.iOS;
 }

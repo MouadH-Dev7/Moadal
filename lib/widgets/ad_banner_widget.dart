@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
@@ -9,10 +10,16 @@ class AdBannerWidget extends StatefulWidget {
 }
 
 class _AdBannerWidgetState extends State<AdBannerWidget> {
-  static const String _adUnitId = 'ca-app-pub-6985433383288143/8711391816';
+  static const String _testAdUnitId = 'ca-app-pub-3940256099942544/6300978111';
+  static const String _productionAdUnitId =
+      'ca-app-pub-6985433383288143/8711391816';
+
+  String get _adUnitId =>
+      kDebugMode ? _testAdUnitId : _productionAdUnitId;
 
   BannerAd? _bannerAd;
   bool _isBannerLoaded = false;
+  bool _hasLoadFailed = false;
 
   @override
   void initState() {
@@ -32,6 +39,7 @@ class _AdBannerWidgetState extends State<AdBannerWidget> {
           }
           setState(() {
             _isBannerLoaded = true;
+            _hasLoadFailed = false;
           });
         },
         onAdFailedToLoad: (ad, error) {
@@ -41,8 +49,8 @@ class _AdBannerWidgetState extends State<AdBannerWidget> {
           }
           setState(() {
             _isBannerLoaded = false;
+            _hasLoadFailed = true;
           });
-          debugPrint('Banner ad failed to load: $error');
         },
       ),
     );
@@ -59,19 +67,17 @@ class _AdBannerWidgetState extends State<AdBannerWidget> {
   @override
   Widget build(BuildContext context) {
     if (!_isBannerLoaded || _bannerAd == null) {
-      return const SizedBox.shrink();
+      if (_hasLoadFailed) {
+        return const SizedBox.shrink();
+      }
+      return const SizedBox(height: 0);
     }
 
-    return Material(
+    return Container(
       color: Theme.of(context).scaffoldBackgroundColor,
-      child: SafeArea(
-        top: false,
-        child: SizedBox(
-          width: double.infinity,
-          height: _bannerAd!.size.height.toDouble(),
-          child: AdWidget(ad: _bannerAd!),
-        ),
-      ),
+      width: double.infinity,
+      height: _bannerAd!.size.height.toDouble(),
+      child: AdWidget(ad: _bannerAd!),
     );
   }
 }
