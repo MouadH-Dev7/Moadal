@@ -60,7 +60,7 @@ class _HomePage2State extends State<HomePage2>
   }
 
   void _openStage(Widget? route, String title) {
-    HapticFeedbackHelper.selection();
+    HapticFeedbackHelper.selectionClick();
     if (route != null) {
       Navigator.push(context, MaterialPageRoute(builder: (_) => route));
       return;
